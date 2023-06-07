@@ -1,0 +1,66 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
+
+group = 'com.github.Joseph'
+version = 'v1.0'
+
+android {
+    namespace 'com.joseph.materialtextfield'
+    compileSdk targetAndroidSdk
+
+    defaultConfig {
+        minSdk minSdk
+        targetSdk targetAndroidSdk
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceCompatibility JavaVersion.VERSION_11
+    targetCompatibility JavaVersion.VERSION_11
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.2'
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation Libs.Android.CoreKtx
+
+    //Compose
+    implementation Libs.Android.UiCompose
+    implementation Libs.Android.UiToolingPreviewCompose
+    implementation Libs.Android.MaterialCompose
+    implementation Libs.Android.UiToolingCompose
+    implementation Libs.Android.SystemUiController
+    implementation Libs.Android.ComposeNavigation
+}
+afterEvaluate {
+    publishing {
+        publications({
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.Joseph'
+                artifactId = 'josephNumberTextField'
+                version = 'v1.0'
+            }
+        })
+    }
+}

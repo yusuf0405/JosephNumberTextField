@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+
+        core_ktx_verion = "1.9.0"
+
+        targetAndroidSdk = 33
+        minAndroidSdk = 24
+
+        kotlin_compiler_extension_version = "1.4.2"
+
+        build_gradle_version = "7.2.2"
+        kotlin_version = "1.7.20"
+        google_service_version = "4.3.15"
+
+        compose_bom_version = "2023.03.00"
+        compose_ui_version = "1.4.0"
+        accompanist_version = "0.28.0"
+        material_compose_version = "1.3.1"
+        nav_version = "2.5.3"
+
+        //Test
+        junit_version = "4.13.2"
+        jupiter_version = "5.8.2"
+        ext_junit_version = "1.1.3"
+        espresso_version = "3.5.1"
+        mockito_version = "3.11.1"
+        mockk_version = "1.11.0"
+
+
+        Libs = [
+                Android: [
+                        CoreKtx                : "androidx.core:core-ktx:$core_ktx_verion",
+
+                        UiCompose              : "androidx.compose.ui:ui:$compose_ui_version",
+                        UiToolingPreviewCompose: "androidx.compose.ui:ui-tooling-preview:$compose_ui_version",
+                        UiToolingCompose       : "androidx.compose.ui:ui-tooling:$compose_ui_version",
+                        UiTestManifestCompose  : "androidx.compose.ui:ui-test-manifest:$compose_ui_version",
+                        MaterialCompose        : "androidx.compose.material:material:$material_compose_version",
+
+
+                        ComposeUi              : "androidx.compose.ui:ui:$compose_ui_version",
+                        ComposeMaterial        : "androidx.compose.material:material:$compose_ui_version",
+                        ComposeToolingPrewiew  : "androidx.compose.ui:ui-tooling-preview:$compose_ui_version",
+                        SystemUiController     : "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version",
+                        ComposeNavigation      : "androidx.navigation:navigation-compose:$nav_version",
+                        JUnitExt               : "androidx.test.ext:junit:$ext_junit_version",
+                        EspressoCore           : "androidx.test.espresso:espresso-core:$espresso_version",
+                ]
+        ]
+    }
+}
+plugins {
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
+    id 'org.jetbrains.kotlin.android' version "$kotlin_version" apply false
+    id 'org.jetbrains.kotlin.jvm' version "$kotlin_version" apply false
+}
